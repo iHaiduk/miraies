@@ -6,6 +6,7 @@ import { Tasks } from '../backend/tasks.js';
 
 import Task from './Task.jsx';
 import Header from './Header.jsx';
+import Section from './Section.jsx';
 
 // App component - represents the whole app
 class App extends Component {
@@ -34,7 +35,10 @@ class App extends Component {
 
     render() {
         return (
-            <Header />
+            <div>
+                <Header />
+                <Section />
+            </div>
         );
     }
 }
