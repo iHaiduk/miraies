@@ -4,9 +4,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import { Tasks } from '../backend/tasks.js';
 
-import Task from './Task.jsx';
-import Header from './Header.jsx';
-import Section from './Section.jsx';
+import Header from './Components/Header/index';
+import Section from './Components/Section/index';
 
 // App component - represents the whole app
 class App extends Component {
@@ -26,20 +25,13 @@ class App extends Component {
         ReactDOM.findDOMNode(this.refs.textInput).value = '';
     }
 
-    renderTasks() {
-        //console.log(this.props.tasks)
-        return this.props.tasks.map((task) => (
-            <Task key={task._id} task={task} />
-        ));
-    }
-
     render() {
         return (
             <div>
                 <Header />
-                <Section />
+                <Section view="header" />
             </div>
-        );
+        )
     }
 }
 
