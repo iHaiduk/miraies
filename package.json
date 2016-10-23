@@ -11,5 +11,39 @@
     "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
     "react-dom": "^15.3.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.1",
+    "lost": "^7.1.0",
+    "postcss-easy-import": "^1.0.1",
+    "postcss-nested": "^1.0.0",
+    "postcss-safe-parser": "^2.0.0",
+    "postcss-sassy-mixins": "^2.0.0",
+    "postcss-scss": "^0.3.1",
+    "postcss-simple-vars": "^3.0.0",
+    "rucksack-css": "^0.8.6"
+  },
+  "postcss": {
+    "plugins": {
+      "postcss-easy-import": {
+        "extensions": [
+          ".css",
+          ".scss",
+          ".import.css"
+        ]
+      },
+      "postcss-sassy-mixins": {},
+      "postcss-nested": {},
+      "postcss-simple-vars": {},
+      "rucksack-css": {},
+      "lost": {},
+      "autoprefixer": {
+        "browsers": [
+          "> 0%"
+        ]
+      }
+    },
+    "parser": "postcss-safe-parser",
+    "excludedPackages": ["juliancwirko:s-alert"]
   }
 }
