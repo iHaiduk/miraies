@@ -11,7 +11,9 @@ export default ({Icon}) =>
     <section className={header}>
         <h1 className={header('write')}>Live and Write.</h1>
         <h1 className={header('read')}>Read and Dream.</h1>
-        <Icon link="/img/svg/arrow-down.svg" />
-        <Icon link="/img/svg/arrow-down.svg" />
-        <Icon link="/img/svg/arrow-down.svg" />
+        <div>
+            <Icon name="arrow-down" element="down" width={35} />
+            <Icon name="arrow-down" element="down" width={35} />
+            <Icon name="arrow-down" element="down" width={35} />
+        </div>
     </section>

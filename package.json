@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "bem-cn": "^2.1.3",
+    "load-svg": "^1.0.0",
     "lodash": "^4.16.4",
     "meteor-node-stubs": "^0.2.3",
     "react": "^15.3.2",
@@ -44,6 +45,8 @@
       }
     },
     "parser": "postcss-safe-parser",
-    "excludedPackages": ["juliancwirko:s-alert"]
+    "excludedPackages": [
+      "juliancwirko:s-alert"
+    ]
   }
 }
