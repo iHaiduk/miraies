@@ -4,16 +4,15 @@
 
 import React from 'react';
 import block from '../../../Classes/Bem';
+import {Elements} from '../../../Classes/Element';
 
 const header = block('sectionHeader');
 
-export default ({Icon}) =>
+export default ({elements}) =>
     <section className={header}>
         <h1 className={header('write')}>Live and Write.</h1>
         <h1 className={header('read')}>Read and Dream.</h1>
         <div>
-            <Icon name="arrow-down" element="down" width={35} />
-            <Icon name="arrow-down" element="down" width={35} />
-            <Icon name="arrow-down" element="down" width={35} />
+            <Elements elements={elements} />
         </div>
     </section>

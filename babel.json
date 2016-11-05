@@ -1,0 +1,8 @@
+{
+  "debug": true,
+  "verbose": true,
+  "extensions": ["es6.js", "es6"],
+  "stage": 0,
+  "presets": ["es2017"],
+  "plugins": ["transform-es2015-modules-commonjs"]
+}

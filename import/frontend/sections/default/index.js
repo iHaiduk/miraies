@@ -3,8 +3,6 @@
  */;
 
 import { Component, PropTypes } from "react";
-import Icon from "./../Icons/index";
-//const Icon = require('./../Icon/index').default;
 
 export default class Section extends Component {
 
@@ -13,9 +11,9 @@ export default class Section extends Component {
     }
 
     render() {
-        const { view } = this.props;
+        const { view, elements } = this.props;
         let template = require('./templates/' + view).default;
-        return template({Icon});
+        return template({elements});
     }
 }
 

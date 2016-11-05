@@ -1,35 +1,18 @@
-import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
-import { createContainer } from 'meteor/react-meteor-data';
+import React, {Component, PropTypes} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
+import {Tasks} from '../backend/tasks.js';
+import {Elements} from './Classes/Element';
 
-import { Tasks } from '../backend/tasks.js';
-
-import Header from './Components/Header/index';
-import Section from './Components/Section/index';
+import structure from '../../_structure/landing';
 
 // App component - represents the whole app
 class App extends Component {
 
-    handleSubmit(event) {
-        event.preventDefault();
-
-        // Find the text field via the React ref
-        const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-
-        Tasks.insert({
-            text,
-            createdAt: new Date(), // current time
-        });
-
-        // Clear form
-        ReactDOM.findDOMNode(this.refs.textInput).value = '';
-    }
-
     render() {
+        let elements = this.props.structure.elements;
         return (
             <div>
-                <Header />
-                <Section view="header" />
+                <Elements elements={elements}/>
             </div>
         )
     }
@@ -41,6 +24,9 @@ App.propTypes = {
 
 export default createContainer(() => {
     return {
-        tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
+        tasks: Tasks.find({}, {sort: {createdAt: -1}}).fetch(),
+        structure
     };
-}, App);
+},
+    App
+    );

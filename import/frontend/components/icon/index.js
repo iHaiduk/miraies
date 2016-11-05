@@ -6,7 +6,7 @@ import { Component, PropTypes } from "react";
 const loadsvg = require('load-svg');
 let svg_load;
 
-export default class Section extends Component {
+export default class Icon extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -47,7 +47,7 @@ export default class Section extends Component {
     }
 }
 
-Section.propTypes = {
+Icon.propTypes = {
     view: PropTypes.string,
     name: PropTypes.string,
     width: PropTypes.number,
@@ -55,7 +55,7 @@ Section.propTypes = {
     element: PropTypes.string
 };
 
-Section.defaultProps = {
+Icon.defaultProps = {
     view: 'index',
     name: 'default',
     width: 50,
