@@ -4,13 +4,17 @@
 
 import React from 'react';
 import block from '../../../Classes/Bem';
+import DevTools from 'mobx-react-devtools';
 
 const _button = block('button');
 
-export default ({text}, {stateText}, {handler}) => {
+export default ({data}, {resetTimer}) => {
 
     //let _class = {}; _class[stateText] = true;
-    return <button onClick={handler}>
-        {stateText || text}
-    </button>
+    return <div>
+        <button onClick={resetTimer}>
+            Seconds passed: {data.timer}
+        </button>
+        <DevTools />
+    </div>
 }

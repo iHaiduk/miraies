@@ -5,10 +5,10 @@
 export default {
     elements: [
         {
-            type: 'module',
-            name: 'header',
+            type: 'component',
+            name: 'button',
             options: {}
-        },
+        }/*,
         {
             type: 'section',
             name: 'default',
@@ -44,6 +44,6 @@ export default {
                     }
                 ]
             }
-        }
+        }*/
     ]
 }

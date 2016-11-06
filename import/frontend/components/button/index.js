@@ -3,36 +3,33 @@
  */;
 
 import { Component, PropTypes } from "react";
+import { observer } from 'mobx-react';
+import Events from './actions/index';
+import {observable} from 'mobx';
 
-export default class Button extends Component {
+
+@observer
+class Button extends Component {
 
     constructor(props, context) {
         super(props, context);
-        let events = {
-            handler: this.handler.bind(this)
-        };
-        Object.assign(this, events);
-        this.state =  {stateText: null};
-    }
-
-    handler() {
-
-        this.setState({stateText: 'test'})
     }
 
     render() {
         const { view } = this.props;
         let template = require('./templates/' + view).default;
-        return template(this.props, this.state, this);
+        return template(this.props, Events);
     }
 }
+export default Button;
 
 Button.propTypes = {
     view: PropTypes.string,
-    text: PropTypes.string
+    text: PropTypes.string,
+    data: PropTypes.any
 };
 
 Button.defaultProps = {
     view: 'index',
-    text: 'Button'
+    data: Events.getData()
 };
