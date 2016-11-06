@@ -12,7 +12,5 @@ export default ({elements}) =>
     <section className={header}>
         <h1 className={header('write')}>Live and Write.</h1>
         <h1 className={header('read')}>Read and Dream.</h1>
-        <div>
-            <Elements elements={elements} />
-        </div>
+        <Elements elements={elements} />
     </section>
