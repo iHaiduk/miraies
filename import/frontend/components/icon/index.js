@@ -2,27 +2,16 @@
  * Created by igor on 12.10.16.
  */;
 
-import { Component, PropTypes } from "react";
-const loadsvg = require('load-svg');
+import { Component } from "react";
+import { observer } from 'mobx-react';
+import loadsvg from 'load-svg';
 let svg_load;
 
-export default class Icon extends Component {
+@observer
+class Icon extends Component {
 
     constructor(props, context) {
         super(props, context);
-
-        this.state = {
-            viewBox: '0 0 100 100'
-        };
-        this.setViewBox = this.setViewBox.bind(this);
-    }
-
-    setViewBox(err, svg){
-
-        const self = this;
-        self.setState({
-            viewBox: document.getElementById(self.props.name).getAttribute('viewBox')
-        });
     }
 
     componentWillMount() {
@@ -36,29 +25,15 @@ export default class Icon extends Component {
     }
 
     componentDidMount() {
-        const self = this;
-        svg_load.then(self.setViewBox);
+        svg_load.then(this.events.setViewBox);
     }
 
     render() {
-        const { view } = this.props;
-        let template = require('./templates/' + view).default;
-        return template(this.props, this.state);
+        const { view } = this.store;
+        const template = require('./templates/' + view).default;
+
+        return template(this.store, this.events);
     }
 }
 
-Icon.propTypes = {
-    view: PropTypes.string,
-    name: PropTypes.string,
-    width: PropTypes.number,
-    height: PropTypes.number,
-    element: PropTypes.string
-};
-
-Icon.defaultProps = {
-    view: 'index',
-    name: 'default',
-    width: 50,
-    height: 50,
-    element: null
-};
+export default Icon;

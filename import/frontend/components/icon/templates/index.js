@@ -4,12 +4,10 @@
 
 import React from 'react';
 import block from '../../../Classes/Bem';
-// import ReactSVG from 'react-svg';
-//
-// console.log(ReactSVG)
+
 const _icon = block('icon');
 
-export default ({name, width, height, element}, {viewBox}) =>
+export default ({name, width, height, element, viewBox}) =>
     <i className={_icon({element})}>
         <svg viewBox={viewBox} width={width} height={height}>
             <use xlinkHref={'#' + name}></use>

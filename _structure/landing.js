@@ -5,9 +5,13 @@
 export default {
     elements: [
         {
-            type: 'component',
-            name: 'button',
-            options: {}
+            "type": "component",
+            "name": "icon",
+            "options": {
+                name: "arrow-down",
+                element: "down",
+                width: 35
+            }
         }/*,
         {
             type: 'section',

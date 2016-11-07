@@ -4,9 +4,6 @@
 
 import { Component, PropTypes } from "react";
 import { observer } from 'mobx-react';
-import Events from './actions/index';
-import {observable} from 'mobx';
-
 
 @observer
 class Button extends Component {
@@ -16,20 +13,10 @@ class Button extends Component {
     }
 
     render() {
-        const { view } = this.props;
-        let template = require('./templates/' + view).default;
-        return template(this.props, Events);
+        const { view } = this.store;
+        const template = require('./templates/' + view).default;
+
+        return template(this.store, this.events);
     }
 }
 export default Button;
-
-Button.propTypes = {
-    view: PropTypes.string,
-    text: PropTypes.string,
-    data: PropTypes.any
-};
-
-Button.defaultProps = {
-    view: 'index',
-    data: Events.getData()
-};

@@ -6,6 +6,7 @@ import { observable } from 'mobx';
 
 class Data {
     @observable timer = 0;
+    @observable view = 'index';
 }
 
 class Events {
