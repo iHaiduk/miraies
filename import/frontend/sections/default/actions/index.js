@@ -8,11 +8,6 @@ class Events {
 
     constructor() {
         this.store = new Model;
-        this.resetTimer = this.resetTimer.bind(this);
-    }
-
-    resetTimer() {
-        this.store.timer += 1;
     }
 
 }

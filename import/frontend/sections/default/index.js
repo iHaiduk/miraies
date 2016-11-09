@@ -1,8 +1,10 @@
 /**
  * Created by igor on 12.10.16.
- */;
+ */
 
-import { Component, PropTypes } from "react";
+'use strict';
+
+import {Component, PropTypes} from "react";
 
 export default class Section extends Component {
 
@@ -11,16 +13,14 @@ export default class Section extends Component {
     }
 
     render() {
-        const { view, elements } = this.props;
-        let template = require('./templates/' + view).default;
-        return template({elements});
+        const {view} = this.store;
+        const template = require('./templates/' + view).default;
+
+        return template(this.store, this.events);
     }
 }
 
 Section.propTypes = {
-    view: PropTypes.string
-};
-
-Section.defaultProps = {
-    view: 'index'
+    view: PropTypes.string,
+    elements: PropTypes.any
 };

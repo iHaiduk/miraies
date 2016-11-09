@@ -14,9 +14,26 @@ export default class Element extends Component {
     render() {
         const {options, name, type} = this.props;
         const path = `../${type}s/${name}`;
+        const _model = require(`${path}/actions/model`).default;
+        const model = new _model;
         const events = require(`${path}/actions/index`).default;
         const Component = require(path).default;
-        events.store = _.merge(events.store, this.props.options);
+        events.store = _.merge(events.store, options);
+
+        if(Component.prototype.constructor.propTypes == null) {
+            throw `Component "${Component.prototype.constructor.name}" don't have "propTypes".`;
+        }
+
+        Object.keys(options).forEach((key) => {
+            if(key != 'elements') {
+                if (model[key] === undefined) {
+                    throw `Component "${Component.prototype.constructor.name}" don't have "${key}" property in the model.`;
+                }
+                if (!Component.prototype.constructor.propTypes.hasOwnProperty(key)) {
+                    console.warn(`Component "${Component.prototype.constructor.name}" don't have "${key}" types in the propTypes.`);
+                }
+            }
+        });
 
         Object.defineProperty(Component.prototype, "dom", {
             configurable: true,
@@ -32,7 +49,7 @@ export default class Element extends Component {
         });
 
         Object.defineProperty(Component.prototype, "store", {
-            value: events.getData()
+            value: events.store
         });
 
         Object.defineProperty(Component.prototype, "view", {
@@ -57,11 +74,13 @@ export class Elements extends Component {
     render() {
         const {elements} = this.props;
         let elementsRender = [];
-        elements.forEach((component, key) => {
-            elementsRender.push(
-                <Element type={component.type} name={component.name} options={component.options} key={key}/>
-            );
-        });
+        if(_.isArray(elements)) {
+            elements.forEach((component, key) => {
+                elementsRender.push(
+                    <Element type={component.type} name={component.name} options={component.options} key={key}/>
+                );
+            });
+        }
         return <div>
             {elementsRender}
         </div>;

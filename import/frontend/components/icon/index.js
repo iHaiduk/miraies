@@ -1,9 +1,10 @@
 /**
  * Created by igor on 12.10.16.
- */;
+ */
+'use strict';
 
-import { Component } from "react";
-import { observer } from 'mobx-react';
+import {Component, PropTypes} from "react";
+import {observer} from 'mobx-react';
 import loadsvg from 'load-svg';
 let svg_load;
 
@@ -15,9 +16,9 @@ class Icon extends Component {
     }
 
     componentWillMount() {
-        if(!svg_load)
+        if (!svg_load)
             svg_load = new Promise((resolve) => {
-                loadsvg('/img/svg/sprite.svg', (err, svg) =>{
+                loadsvg('/img/svg/sprite.svg', (err, svg) => {
                     document.body.insertBefore(svg, document.body.firstChild);
                     resolve();
                 });
@@ -29,7 +30,7 @@ class Icon extends Component {
     }
 
     render() {
-        const { view } = this.store;
+        const {view} = this.store;
         const template = require('./templates/' + view).default;
 
         return template(this.store, this.events);
@@ -37,3 +38,11 @@ class Icon extends Component {
 }
 
 export default Icon;
+
+Icon.propTypes = {
+    view: PropTypes.string,
+    name: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    className: PropTypes.object
+};

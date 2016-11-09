@@ -5,14 +5,10 @@
 export default {
     elements: [
         {
-            "type": "component",
-            "name": "icon",
-            "options": {
-                name: "arrow-down",
-                element: "down",
-                width: 35
-            }
-        }/*,
+            type: 'module',
+            name: 'header',
+            options: {}
+        },
         {
             type: 'section',
             name: 'default',
@@ -24,7 +20,9 @@ export default {
                         "name": "icon",
                         "options": {
                             name: "arrow-down",
-                            element: "down",
+                            className: {
+                                element: "down"
+                            },
                             width: 35
                         }
                     },
@@ -33,7 +31,9 @@ export default {
                         "name": "icon",
                         "options": {
                             name: "arrow-down",
-                            element: "down",
+                            className: {
+                                element: "down"
+                            },
                             width: 35
                         }
                     },
@@ -42,12 +42,14 @@ export default {
                         "name": "icon",
                         "options": {
                             name: "arrow-down",
-                            element: "down",
+                            className: {
+                                element: "down"
+                            },
                             width: 35
                         }
                     }
                 ]
             }
-        }*/
+        }
     ]
 }

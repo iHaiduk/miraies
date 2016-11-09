@@ -1,9 +1,9 @@
 /**
  * Created by igor on 12.10.16.
- */;
+ */
+'use strict';
 
-import { Component } from "react";
-import template from './templates/index';
+import {Component, PropTypes} from "react";
 
 export default class Header extends Component {
 
@@ -12,6 +12,14 @@ export default class Header extends Component {
     }
 
     render() {
-        return template();
+        const {view} = this.store;
+        const template = require('./templates/' + view).default;
+
+        return template(this.store, this.events);
     }
 }
+
+Header.propTypes = {
+    view: PropTypes.string,
+    elements: PropTypes.any
+};
