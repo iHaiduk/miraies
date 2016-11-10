@@ -5,8 +5,10 @@
 'use strict';
 
 import {Component, PropTypes} from "react";
+import {observer} from 'mobx-react';
 
-export default class Section extends Component {
+@observer
+class Button extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -19,9 +21,9 @@ export default class Section extends Component {
         return template(this.store, this.events);
     }
 }
+export default Button;
 
-Section.propTypes = {
+Button.propTypes = {
     view: PropTypes.string,
-    elements: PropTypes.any,
     text: PropTypes.string
 };

@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
-import {Tasks} from '../backend/tasks.js';
+import {Pages} from '../backend/pages.js';
 import {Elements} from './Classes/Element';
 
 import structure from '../../_structure/landing';
@@ -9,7 +9,7 @@ import structure from '../../_structure/landing';
 class App extends Component {
 
     render() {
-        let elements = this.props.structure.elements;
+        let elements = (this.props.pages || structure).elements || [];
         return (
             <div>
                 <Elements elements={elements}/>
@@ -19,13 +19,12 @@ class App extends Component {
 }
 
 App.propTypes = {
-    tasks: PropTypes.array.isRequired,
+    pages: PropTypes.any,
 };
 
 export default createContainer(() => {
         return {
-            tasks: Tasks.find({}, {sort: {createdAt: -1}}).fetch(),
-            structure
+            pages: null//Pages.findOne({name: 'landing'})
         };
     },
     App

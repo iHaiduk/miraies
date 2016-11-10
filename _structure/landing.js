@@ -50,6 +50,17 @@ export default {
                     }
                 ]
             }
+        },
+        {
+            type: 'section',
+            name: 'default',
+            options: {
+                elements: [{
+                    "type": "component",
+                    "name": "text",
+                    "options": {}
+                }]
+            }
         }
     ]
 }

@@ -4,8 +4,11 @@
 
 import React from 'react';
 import block from '../../../Classes/Bem';
+import {Elements} from '../../../Classes/Element';
 
 const _default = block('default');
 
-export default () =>
-    <section className={_default}>default</section>
+export default ({elements}) =>
+    <section className={_default}>
+        <Elements elements={elements} />
+    </section>

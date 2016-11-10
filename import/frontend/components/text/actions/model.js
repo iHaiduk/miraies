@@ -6,7 +6,7 @@ import { observable } from 'mobx';
 
 class Model {
     @observable view = 'index';
-    @observable text = 'default 2';
+    @observable text = 'default text';
 }
 
 export default Model;

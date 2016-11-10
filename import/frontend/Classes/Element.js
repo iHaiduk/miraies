@@ -16,9 +16,10 @@ export default class Element extends Component {
         const path = `../${type}s/${name}`;
         const _model = require(`${path}/actions/model`).default;
         const model = new _model;
-        const events = require(`${path}/actions/index`).default;
+        const _events = require(`${path}/actions/index`).default;
+        const events = new _events;
         const Component = require(path).default;
-        events.store = _.merge(events.store, options);
+        events.store = _.merge(model, options);
 
         if(Component.prototype.constructor.propTypes == null) {
             throw `Component "${Component.prototype.constructor.name}" don't have "propTypes".`;
@@ -35,21 +36,14 @@ export default class Element extends Component {
             }
         });
 
+        Component.prototype.events = events;
+        Component.prototype.store = events.store;
+
         Object.defineProperty(Component.prototype, "dom", {
             configurable: true,
             value: function (ref) {
                 return ref != null ? this.refs[ref] : ReactDOM.findDOMNode(this);
             }
-        });
-
-        Object.defineProperty(Component.prototype, "events", {
-            value: events,
-            writable: false, // запретить присвоение
-            configurable: false // запретить удаление
-        });
-
-        Object.defineProperty(Component.prototype, "store", {
-            value: events.store
         });
 
         Object.defineProperty(Component.prototype, "view", {
