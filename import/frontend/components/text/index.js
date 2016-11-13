@@ -8,7 +8,7 @@ import {Component, PropTypes} from "react";
 import {observer} from 'mobx-react';
 
 @observer
-class Button extends Component {
+class Text extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -21,9 +21,11 @@ class Button extends Component {
         return template(this.store, this.events);
     }
 }
-export default Button;
+export default Text;
 
-Button.propTypes = {
+Text.propTypes = {
     view: PropTypes.string,
-    text: PropTypes.string
+    text: PropTypes.string,
+    tagType: PropTypes.string,
+    containerClassName: PropTypes.any
 };

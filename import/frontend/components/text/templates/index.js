@@ -4,17 +4,27 @@
 
 import React from 'react';
 import TextTruncate from 'react-text-truncate';
-import DevTools from 'mobx-react-devtools';
 
-export default ({text}) => {
+export default (props) => {
 
-    return <div>
-        <TextTruncate
+    if(process.env.NODE_ENV == 'development') {
+        const DevTools = require('mobx-react-devtools').default;
+        console.log(props)
+        return <div>
+            <TextTruncate
+                {...props}
+                line={1}
+                truncateText="…"
+                tagType="h1"
+            />
+            <DevTools />
+        </div>
+    } else {
+        return <TextTruncate
+            {...props}
             line={1}
             truncateText="…"
-            text={text}
-            textTruncateChild={<a href="#">Read on</a>}
+            tagType="h1"
         />
-        <DevTools />
-    </div>
+    }
 }

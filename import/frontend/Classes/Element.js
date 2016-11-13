@@ -22,13 +22,13 @@ export default class Element extends Component {
         events.store = _.merge(model, options);
 
         if(Component.prototype.constructor.propTypes == null) {
-            throw `Component "${Component.prototype.constructor.name}" don't have "propTypes".`;
+            console.warn(`Component "${Component.prototype.constructor.name}" don't have "propTypes".`);
         }
 
         Object.keys(options).forEach((key) => {
             if(key != 'elements') {
                 if (model[key] === undefined) {
-                    throw `Component "${Component.prototype.constructor.name}" don't have "${key}" property in the model.`;
+                    console.warn(`Component "${Component.prototype.constructor.name}" don't have "${key}" property in the model.`);
                 }
                 if (!Component.prototype.constructor.propTypes.hasOwnProperty(key)) {
                     console.warn(`Component "${Component.prototype.constructor.name}" don't have "${key}" types in the propTypes.`);
@@ -56,7 +56,7 @@ export default class Element extends Component {
             }
         });
 
-        return <Component {...options}/>
+        return <Component {...events.store}/>
     }
 };
 
