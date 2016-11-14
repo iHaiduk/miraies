@@ -5,11 +5,11 @@
 class Events {
 
     constructor() {
-        this.setViewBox = this.setViewBox.bind(this);
+        //this.setViewBox = this.setViewBox.bind(this);
     }
 
     setViewBox(){
-        this.store.viewBox = document.getElementById(this.store.name).getAttribute('viewBox');
+        //this.store.viewBox = document.getElementById(this.store.name).getAttribute('viewBox');
     }
 
 }

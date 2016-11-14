@@ -14,6 +14,15 @@ class Text extends Component {
         super(props, context);
     }
 
+    componentDidMount(){
+        console.log(this.events)
+        this.events.didMount.call(this);
+    }
+
+    componentDidUpdate(){
+        this.events.didMount.call(this);
+    }
+
     render() {
         const {view} = this.store;
         const template = require('./templates/' + view).default;

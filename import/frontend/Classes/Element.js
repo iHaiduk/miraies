@@ -4,30 +4,36 @@
 import React, {Component, PropTypes} from "react";
 import ReactDOM from "react-dom";
 import _ from 'lodash';
+import assignIn from 'lodash/assignIn';
 
 export default class Element extends Component {
 
     constructor(props, context) {
         super(props, context);
+        const {options, name, type} = props;
+        const path = `../${type}s/${name}`;
+
+        this.Component = require(path).default;
+        this.store = require(`${path}/actions/model`).default;
+        this.events = require(`${path}/actions/index`).default;
+
+        console.log(999, this.refs.component)
+
+        const events = new this.events;
+        Component.prototype = assignIn(Component.prototype, events, {events, store: Object.assign(new this.store, options)});
     }
 
     render() {
-        const {options, name, type} = this.props;
-        const path = `../${type}s/${name}`;
-        const _model = require(`${path}/actions/model`).default;
-        const model = new _model;
-        const _events = require(`${path}/actions/index`).default;
-        const events = new _events;
-        const Component = require(path).default;
-        events.store = _.merge(model, options);
+
+        const Component = this.Component;
 
         if(Component.prototype.constructor.propTypes == null) {
             console.warn(`Component "${Component.prototype.constructor.name}" don't have "propTypes".`);
         }
 
-        Object.keys(options).forEach((key) => {
+        Object.keys(this.store).forEach((key) => {
             if(key != 'elements') {
-                if (model[key] === undefined) {
+                if (Component.prototype.store[key] === undefined) {
                     console.warn(`Component "${Component.prototype.constructor.name}" don't have "${key}" property in the model.`);
                 }
                 if (!Component.prototype.constructor.propTypes.hasOwnProperty(key)) {
@@ -35,9 +41,6 @@ export default class Element extends Component {
                 }
             }
         });
-
-        Component.prototype.events = events;
-        Component.prototype.store = events.store;
 
         Object.defineProperty(Component.prototype, "dom", {
             configurable: true,
@@ -56,7 +59,7 @@ export default class Element extends Component {
             }
         });
 
-        return <Component {...events.store}/>
+        return <Component ref="component" {...Component.prototype.store} />
     }
 };
 
