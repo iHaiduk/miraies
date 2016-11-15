@@ -1,20 +1,25 @@
-/**
- * Created by igor on 25.09.16.
- */
 Package.describe({
-    // Short two-sentence summary.
-    summary: "What this does",
-    // Version number.
-    version: "0.0.1"
+    name: 'miraries',
+    version: '0.0.1',
+    // Brief, one-line summary of the package.
+    summary: '',
+    // URL to the Git repository containing the source code for this package.
+    git: '',
+    // By default, Meteor will default to using README.md for documentation.
+    // To avoid submitting documentation, set this field to null.
+    documentation: 'README.md'
 });
 
-Package.onUse(function(api) {
-    api.versionsFrom('1.4.1.1');
+Package.onUse(function (api) {
+    api.versionsFrom('1.4.2.1');
+    api.use('ecmascript');
     api.addFiles('styles.styl', 'client');
-    api.mainModule('main.js');
+    api.mainModule('miraries.js');
 });
-Package.onTest(function(api) {
+
+Package.onTest(function (api) {
     api.use('ecmascript');
     api.use('tinytest');
+    api.use('miraries');
     api.mainModule('miraries-tests.js');
 });
