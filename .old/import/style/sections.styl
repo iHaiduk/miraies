@@ -1,0 +1,29 @@
+@import "../../client/styles/variables.styl"
+
+.sectionHeader
+  position absolute
+  top 50%
+  right 0
+  bottom 0
+  left 50%
+  width 910px
+  margin-left -(@width / 2)
+  margin-top -70px
+
+
+  $l_h = 45px
+  &__write
+    @extends .head_400
+    color $header_color_text
+    font-size 40px
+    float left
+    letter-spacing 5px
+    text-transform uppercase
+    line-height $l_h
+
+
+
+  &__read
+    @extends .sectionHeader__write
+    float right
+    margin-top $l_h * 2

@@ -1,0 +1,50 @@
+@keyframes firstArrow {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.6; }
+}
+@keyframes secondArrow {
+  0% { opacity: 0.75; }
+  25% { opacity: 0.9; }
+  50% { opacity: 0.75; }
+  75% { opacity: 0.6; }
+  100% { opacity: 0.75; }
+}
+@keyframes thirdArrow {
+  0% { opacity: 0.9; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.9; }
+}
+
+.icon
+  width 50px
+  height 30px
+  fill white
+
+  svg
+    display block
+
+  &_element-down
+    position absolute
+    left 50%
+    margin-left -15px
+
+    time = 1.5s
+
+    &:nth-child(1)
+      bottom 90px
+      animation-name thirdArrow
+      animation-duration time
+      animation-iteration-count infinite
+
+    &:nth-child(2)
+      bottom 60px
+      animation-name: secondArrow;
+      animation-duration: time
+      animation-iteration-count infinite
+
+    &:nth-child(3)
+      bottom 30px
+      animation-name firstArrow
+      animation-duration time
+      animation-iteration-count infinite

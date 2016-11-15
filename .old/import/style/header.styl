@@ -1,0 +1,63 @@
+@import "../../client/styles/variables.styl"
+
+.header
+  display block
+  height calc(100vh + 200px)
+  background-image url($image_path + 'bg/background.png')///Users/igor/WebstormProjects/miraries/public/other/shutterstock_244605115.jpg
+  background-repeat no-repeat
+  background-position center center
+  background-size cover
+
+  &:before
+    content ""
+    width 0
+    height 0
+    border-top border = 200px solid transparent
+    border-right 100vw solid white
+    position absolute
+    bottom - border
+
+  .logo
+    position absolute
+    left 50%
+    width width = 100px
+    margin-left -(width / 2)
+    top 35px
+
+    &__image
+      width inherit
+
+  .navigation
+    @extends .header .logo
+    width width = 320px
+    margin-left -(width / 2)
+
+    &__list
+      position relative
+
+    &__element
+      @extends .head_700
+      text-transform uppercase
+      color $header_color_text
+      position absolute
+      letter-spacing $header_letter_spacing
+      font-size $header_size_text
+      top $header_top_position
+
+      &:nth-child(2)
+        right 5px
+
+      &:nth-child(3)
+        top 130px
+        left 112px
+
+  &__login
+    @extends .head_400
+    position absolute
+    top 79px
+    color white
+    letter-spacing $header_letter_spacing
+    font-size 14px
+    text-decoration none
+    text-transform uppercase
+    right 120px
