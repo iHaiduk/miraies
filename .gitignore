@@ -10,5 +10,4 @@ node_modules/
 .old/public/.DS_Store
 .old/public/fonts/.DS_Store
 .old/public/img/.DS_Store
-imports/
 packages/miraries/README.md

@@ -11,7 +11,7 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-    api.versionsFrom('1.4.2.1');
+    api.versionsFrom('1.4.2.2');
     api.use('ecmascript');
     api.addFiles('styles.styl', 'client');
     api.mainModule('miraries.js');
