@@ -6,27 +6,23 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { observable } from 'mobx';
 import {observer} from 'mobx-react';
 
-import { Tasks } from './backend/task.js';
-
-
-
-import Button from './frontend/components/button';
+import Button from './components/button';
 
 
 
 
 // https://gist.github.com/danharper/74a5102363fbd85f6b67
-/*function sleep(ms = 0) {
-    return new Promise(r => setTimeout(r, ms));
-}
-
-(async () => {
-    console.log('a');
-    await sleep(2000);
-    console.log('b');
-    await sleep(2000);
-    console.log('c');
-})();*/
+// function sleep(ms = 0) {
+//     return new Promise(r => setTimeout(r, ms));
+// }
+//
+// (async () => {
+//     console.log('a');
+//     await sleep(2000);
+//     console.log('b');
+//     await sleep(2000);
+//     console.log('c');
+// })();
 
 @observer
 class App extends Component {
@@ -39,6 +35,7 @@ class App extends Component {
         setInterval(() => {
             self.price++;
         }, 1000)
+
     }
 
     render() {
@@ -63,6 +60,6 @@ App.propTypes = {
 
 export default createContainer(() => {
     return {
-        tasks: Tasks.find().fetch(),
+        tasks: []
     };
 }, App);

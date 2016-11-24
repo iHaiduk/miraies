@@ -1,13 +1,4 @@
-.meteor/local
-.idea
 node_modules/
 .DS_Store
-.idea/
-.old/.DS_Store
-.old/.meteor/.DS_Store
-.old/import/.DS_Store
-.old/packages/.DS_Store
-.old/public/.DS_Store
-.old/public/fonts/.DS_Store
-.old/public/img/.DS_Store
-packages/miraries/README.md
+.idea
+.meteor/local
